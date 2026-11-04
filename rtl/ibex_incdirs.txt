@@ -1,0 +1,6 @@
+../ibex/build/lowrisc_ibex_ibex_top_0.1/default-verilator/src/lowrisc_dv_dv_fcov_macros_0
+../ibex/build/lowrisc_ibex_ibex_top_0.1/default-verilator/src/lowrisc_prim_util_get_scramble_params_0/rtl
+../ibex/build/lowrisc_ibex_ibex_top_0.1/default-verilator/src/lowrisc_prim_util_memload_0/rtl
+../ibex/build/lowrisc_ibex_ibex_top_0.1/default-verilator/src/lowrisc_prim_assert_0.1/rtl
+../ibex/build/lowrisc_ibex_ibex_top_0.1/default-verilator/src/lowrisc_prim_secded_0.1/rtl
+../ibex/build/lowrisc_ibex_ibex_top_0.1/default-verilator/src/lowrisc_prim_fifo_0/rtl

@@ -1,0 +1,97 @@
+{
+ "workload": "16x16x16 INT8 GEMM, INT32 accumulate",
+ "macs": 4096,
+ "ops": 8192,
+ "clock_ns": 0.75,
+ "peak_array_gops": 170.66666666666666,
+ "rows": [
+  {
+   "name": "CPU only (ibex_cfet_top), software GEMM",
+   "cycles": 18000,
+   "latency_us": 13.5,
+   "power_mw": 8.80262838,
+   "area_mm2": 0.004912045632,
+   "gops": 0.6068148148148148,
+   "gops_per_w": 68.93563929081995,
+   "gops_per_mm2": 123.53607036173698,
+   "energy_nj": 118.83548313,
+   "pj_per_mac": 29.012569123535155,
+   "edp_nj_us": 1604.279022255,
+   "macs_per_cycle": 0.22755555555555557
+  },
+  {
+   "name": "CPU+NPU (ibex_npu_top), NPU GEMM end to end",
+   "cycles": 4750,
+   "latency_us": 3.5625,
+   "power_mw": 13.33031067,
+   "area_mm2": 0.011617796736,
+   "gops": 2.2995087719298244,
+   "gops_per_w": 172.50226411488612,
+   "gops_per_mm2": 197.92985057178265,
+   "energy_nj": 47.489231761875,
+   "pj_per_mac": 11.594050723114012,
+   "edp_nj_us": 169.1803881516797,
+   "macs_per_cycle": 0.8623157894736843
+  },
+  {
+   "name": "CPU+NPU, DMA kernel only (A/B already in SRAM0; whole-run average power)",
+   "cycles": 2040,
+   "latency_us": 1.53,
+   "power_mw": 13.33031067,
+   "area_mm2": 0.011617796736,
+   "gops": 5.3542483660130715,
+   "gops_per_w": 401.65968360083775,
+   "gops_per_mm2": 460.86607363527827,
+   "energy_nj": 20.395375325099998,
+   "pj_per_mac": 4.979339678979492,
+   "edp_nj_us": 31.204924247402996,
+   "macs_per_cycle": 2.007843137254902
+  },
+  {
+   "name": "CPU+NPU (ibex_npu_top), software GEMM (NPU idle)",
+   "cycles": 18000,
+   "latency_us": 13.5,
+   "power_mw": 14.32933686,
+   "area_mm2": 0.011617796736,
+   "gops": 0.6068148148148148,
+   "gops_per_w": 42.347724862880696,
+   "gops_per_mm2": 52.23148834533154,
+   "energy_nj": 193.44604761000002,
+   "pj_per_mac": 47.22803896728516,
+   "edp_nj_us": 2611.521642735,
+   "macs_per_cycle": 0.22755555555555557
+  }
+ ],
+ "npu_breakdown_cycles": {
+  "total": 4750,
+  "copy_in": 899,
+  "dma": 2053,
+  "copy_out": 1798,
+  "dma_reg": 2040,
+  "pass": true
+ },
+ "power_breakdown_mw": {
+  "npu_gemm": {
+   "top": 8.68254335,
+   "acc": 2.73133972,
+   "sram0": 0.9252153,
+   "sram1": 0.9912123
+  },
+  "sw_gemm_on_npu_top": {
+   "top": 10.00147975,
+   "acc": 2.5299077,
+   "sram0": 0.89897471,
+   "sram1": 0.8989747
+  },
+  "cpu_only": 8.80262838
+ },
+ "die_um2": {
+  "ibex_cfet_top": 4912.045632,
+  "ibex_npu_top": 11617.796736
+ },
+ "gls_pass": {
+  "cpu": true,
+  "npu": true,
+  "npu_sw": true
+ }
+}
