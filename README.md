@@ -11,7 +11,7 @@ the clock tree)
 
 ![ibex_npu_top in 3D: every wire, cell and via of the routed GDS](docs/img/chip3d.jpg)
 
-<sub>`ibex_npu_top` rendered from its routed GDS: 2.23 million wires, 441,214 cells and 853,576 vias, true scale.
+<sub>`ibex_npu_top` rendered from its routed GDS: 2.23 million wires, 441,319 cells and 853,576 vias, true scale.
 Bottom: `u_sram0`, `u_acc` (systolic array), `u_sram1`; top: the Ibex core and its lockstep shadow.</sub>
 
 ## At a glance
@@ -26,7 +26,7 @@ Bottom: `u_sram0`, `u_acc` (systolic array), `u_sram1`; top: the Ibex core and i
 | **Clock** | 750 ps (1.33 GHz) for all four designs (`ibex_cfet_top` setup +8 ps, `ibex_npu_top` setup +1 ps) |
 | **Result** | 16×16×16 INT8 GEMM: NPU chip 3.8× faster and 2.5× less energy than the CPU-only chip, at 2.4× the die area ([details](#cpu-vs-cpu--npu-performance-power-area)) |
 | **Tools** | Genus 25.1 (iSpatial) · Innovus 25.1 · Quantus · IC Validator V-2023.12 · Conformal 22.2 · Xcelium · Verilator |
-| **`ibex_npu_top` layout** | 161,556 logic cells + 279,658 fillers · 28,425 flip-flops/latches · 80,877 nets · 232 pins on M5 |
+| **`ibex_npu_top` layout** | 161,728 logic cells + 279,591 fillers · 28,425 flip-flops/latches · 81,049 nets · 232 pins on M5 |
 
 ## Architecture
 
@@ -143,8 +143,8 @@ What the numbers say:
 - **The accelerator wins on every efficiency metric despite 2.4× the area:** 3.8× faster, 2.5× less energy per GEMM,
   1.6× more GOPS/mm², 9.5× better energy-delay product end to end.
 - **It is data-movement bound, not compute bound.** The 8×8 array can do 64 MACs per cycle (171 GOPS peak) but
-  averages 2 MACs per cycle (3 % of peak) inside the DMA kernel: each 8×8×8 tile spends ~96 cycles loading A/B a
-  32-bit word at a time and ~128 cycles reading the 64 results back, for 8-16 cycles of compute. End to end, the
+  averages 2 MACs per cycle (3 % of peak) inside the DMA kernel: each 8×8×8 tile spends 35 cycles loading A/B a
+  32-bit word at a time and 192 cycles reading the 64 results back, for 22 cycles of compute. End to end, the
   CPU copy loops (899 + 1,798 cycles) cost more than the GEMM itself (2,040).
 - **An idle accelerator is not free.** Running the software GEMM on the NPU chip costs 61 % more energy than on the
   CPU-only chip (2.5 mW in the idle array, 1.8 mW in the two SRAMs): the library has no integrated clock-gating cell,
