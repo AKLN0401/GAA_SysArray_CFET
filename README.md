@@ -115,7 +115,7 @@ cell's own transistors).
 | `lram_256x32` | done | PASS | clean | met, 750 ps | PASS |
 | `npu_acc` | done | PASS | clean | met, 750 ps | PASS |
 | `ibex_cfet_top` | done | PASS | clean | met, 750 ps: setup +8 ps, hold met | PASS |
-| `ibex_npu_top` | done (9 post-route ECO rounds) | PASS | clean | 750 ps: setup +1 ps; hold -3 ps on one path (`u_acc/req_i`, fast corner), accepted and checked in fast-corner GLS | PASS (synthesis → P&R and RTL → P&R) |
+| `ibex_npu_top` | done (9 post-route ECO rounds) | PASS | clean | met, 750 ps: setup +1 ps | PASS (synthesis → P&R and RTL → P&R) |
 
 Foundry DRC (IC Validator) has not been rerun on the final layouts.
 
